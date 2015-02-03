@@ -15,19 +15,22 @@ exports.getBMI = function(height, heightUnit, weight, weightUnit) {
         return new Error("Function requires 4 inputs: height, height unit, weight, weight unit");
     }
 
+
     height = parseFloat(height);
-    heightUnit = heightUnit.toLowerCase();
     weight = parseFloat(weight);
-    weightUnit = weightUnit.toLowerCase();
 
     // validate height and weight
     try {
+
         validateValues(height, weight);
     } catch (error) {
         return error
     }
 
     try {
+
+        heightUnit = heightUnit.toLowerCase();
+        weightUnit = weightUnit.toLowerCase();
         var unitType = getUnitType(heightUnit, weightUnit);
     } catch(error) {
         return error

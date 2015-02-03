@@ -83,4 +83,16 @@ describe("Calculate BMI", function() {
         expect(value).to.be.an.instanceof(Error);
         done();
     });
+
+    it("Returns an error if units aren't strings", function(done) {
+
+        var height = 72;
+        var weight = 150;
+        var hUnit = null;
+        var wUnit = null;
+        var value = bmi.getBMI(height, hUnit, weight, wUnit);
+
+        expect(value).to.be.an.instanceof(Error);
+        done();
+    })
 });
