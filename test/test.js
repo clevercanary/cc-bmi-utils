@@ -16,7 +16,7 @@ describe("Calculate BMI", function() {
         var value = bmi.getBMI(height, hUnit, weight, wUnit);
 
         expect(value).to.not.be.an.instanceof(Error);
-        expect(value).to.equal(20.34);
+        expect(value).to.equal(20.3);
         done();
     });
 
@@ -29,7 +29,7 @@ describe("Calculate BMI", function() {
         var value = bmi.getBMI(height, hUnit, weight, wUnit);
 
         expect(value).to.not.be.an.instanceof(Error);
-        expect(value).to.equal(20.99);
+        expect(value).to.equal(21.0);
         done();
     });
 
@@ -42,7 +42,7 @@ describe("Calculate BMI", function() {
         var value = bmi.getBMI(height, hUnit, weight, wUnit);
 
         expect(value).to.not.be.an.instanceof(Error);
-        expect(value).to.equal(20.34);
+        expect(value).to.equal(20.3);
         done();
     });
 

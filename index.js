@@ -109,10 +109,10 @@ function calculateBMI(height, weight, type) {
     var bmi = weight / (height * height);
 
     if (type === "imperial") {
-        return Math.round( bmi * 703 * 100 ) / 100;
+        return Math.round( bmi * 703 * 10 ) / 10;
     }
     if (type === "metric") {
-        return Math.round( bmi * 100) / 100;
+        return Math.round( bmi * 10) / 10;
     } else {
         return new Error("Unable to calculate BMI");
     }
