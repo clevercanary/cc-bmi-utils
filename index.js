@@ -1,4 +1,8 @@
-'use strict';
+/**
+ * BMI Calculator
+ */
+
+"use strict";
 
 /**
  *
@@ -15,16 +19,23 @@ exports.getBMI = function(height, heightUnit, weight, weightUnit) {
         return new Error("Function requires 4 inputs: height, height unit, weight, weight unit");
     }
 
-
     height = parseFloat(height);
-    weight = parseFloat(weight);
+    if (isNaN(height)) {
+        return new Error("Invalid height");
+    }
 
-    // validate height and weight
+    weight = parseFloat(weight);
+    if (isNaN(weight)) {
+        return new Error("Invalid weight");
+    }
+
+    // Validate height and weight
     try {
 
         validateValues(height, weight);
-    } catch (error) {
-        return error
+    }
+    catch (error) {
+        return error;
     }
 
     try {
@@ -32,8 +43,9 @@ exports.getBMI = function(height, heightUnit, weight, weightUnit) {
         heightUnit = heightUnit.toLowerCase();
         weightUnit = weightUnit.toLowerCase();
         var unitType = getUnitType(heightUnit, weightUnit);
-    } catch(error) {
-        return error
+    }
+    catch(error) {
+        return error;
     }
     return calculateBMI(height, weight, unitType);
 };
@@ -51,6 +63,7 @@ function validateValues (height, weight) {
     if (!height) {
         throw new Error("Invalid height");
     }
+
     if (!weight) {
         throw new Error("Invalid weight");
     }
@@ -73,21 +86,25 @@ function getUnitType(heightUnit, weightUnit) {
 
     if ( heightUnit === "inches" || heightUnit === "feet" ) {
         imperialHeight = true;
-    } else if ( heightUnit === "meters" || heightUnit === "m" ) {
+    }
+    else if ( heightUnit === "meters" || heightUnit === "m" ) {
         metricHeight = true;
     }
 
     if ( weightUnit === "pounds" || weightUnit === "lbs" ) {
         imperialWeight = true;
-    } else if ( weightUnit === "kilograms" || weightUnit === "kg" ) {
+    }
+    else if ( weightUnit === "kilograms" || weightUnit === "kg" ) {
         metricWeight = true;
     }
 
     if (metricHeight && metricWeight) {
         return "metric";
-    } else if (imperialHeight && imperialWeight) {
+    }
+    else if (imperialHeight && imperialWeight) {
         return "imperial";
-    } else {
+    }
+    else {
         throw new Error("Invalid Unit Types\n\n" +
         "Acceptable unit types:\n" +
         "Height: 'meters', 'm', 'inches' \n" +
@@ -111,9 +128,11 @@ function calculateBMI(height, weight, type) {
     if (type === "imperial") {
         return Math.round( bmi * 703 * 10 ) / 10;
     }
+
     if (type === "metric") {
         return Math.round( bmi * 10) / 10;
-    } else {
+    }
+    else {
         return new Error("Unable to calculate BMI");
     }
 }
